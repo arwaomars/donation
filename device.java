@@ -21,7 +21,7 @@ class device {
             Detail = "Device name: " +name+ " | " 
                    + "Device type: " +type+ " | "
                    + "Device status: " +status+ " | "
-                   + "Duration of use:: " +duration;
+                   + "Device usage time in years: " +duration;
         }else{
             Detail = "Device name: " +name+ " | " 
                    + "Device type: " +type+ " | "
@@ -43,4 +43,3 @@ class device {
         }
     }
 }
-
