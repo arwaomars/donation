@@ -1,4 +1,4 @@
-package lifeindonation;
+package donation;
 
 
 import java.sql.Connection;
@@ -104,5 +104,3 @@ public class donorService {
         }
     }
 }
-     
-        

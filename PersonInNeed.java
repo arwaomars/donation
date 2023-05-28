@@ -1,4 +1,4 @@
-package lifeindonation;
+package donation;
 
 import java.sql.Connection;
 import java.sql.Statement;
@@ -40,18 +40,20 @@ public class PersonInNeed extends User{
                     + "\nChoose a Service: "
                     + "\n> 1- List of available medical devices "
                     + "\n> 2- Add a specific need"
-                    + "\n> 3- Order a medical device"
+                    + "\n> 3- Search for a medical device"                    
+                    + "\n> 4- Order a medical device"
                     + "\n-------------------------------------------------\n");
             userSelection = input.nextInt();
         
             //check input
-            while(userSelection != 1 && userSelection != 2 && userSelection != 3){
+            while(userSelection != 1 && userSelection != 2 && userSelection != 3 && userSelection != 4){
                 System.out.print("!!! wrong input !!! \n"
                     + "-------------------------------------------------"
                     + "\nChoose a Service: "
                     + "\n> 1- List of available medical devices "
                     + "\n> 2- Add a specific need"
-                    + "\n> 3- Search for a product "
+                    + "\n> 3- Search for a medical device"                    
+                    + "\n> 4- Order a medical device"
                     + "\n-------------------------------------------------\n");
                 userSelection = input.nextInt();
             }
@@ -63,7 +65,7 @@ public class PersonInNeed extends User{
             }else if(userSelection == 2){
                service.specificNeed(id);
             }else if(userSelection == 3){
-                //service.SearchToOrder();
+                service.SearchToOrder();
             }
             
         }catch(Exception e){
@@ -118,4 +120,3 @@ public class PersonInNeed extends User{
     
     
 }
-

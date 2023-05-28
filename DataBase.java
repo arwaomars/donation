@@ -1,4 +1,4 @@
-package lifeindonation;
+package donation;
 
 
 import java.sql.Connection;
@@ -15,10 +15,9 @@ public class  DataBase {
     public Connection connect()throws SQLException{
         
         return DriverManager.getConnection(address, host, password);
-        
+
     }
     
     
     
 }
-

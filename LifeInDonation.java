@@ -1,4 +1,4 @@
-package lifeindonation;
+package donation;
 
 
 import static java.lang.System.exit;
@@ -65,7 +65,7 @@ public class LifeInDonation {
                 System.out.print("Surname: ");
                 String surname = keyboard.next();
                 System.out.print("Phone Number: ");
-                int phone_number = (int) keyboard.nextLong();
+                int phone_number = (int) keyboard.nextInt();
                
                 /*while(new Integer(phone_number).toString().length() != 10){
                 if (new Integer(phone_number).toString().length() == 10){
@@ -80,10 +80,10 @@ public class LifeInDonation {
                 
                 
                 System.out.print("email: ");
-                String email = keyboard.nextLine();
+                String email = keyboard.next();
                 
                 System.out.print("Address: ");
-                String address = keyboard.nextLine();
+                String address = keyboard.next();
                 
                 Donor donor_info = new Donor(id, 
                         first_name, middle_name, surname, phone_number, 
@@ -137,10 +137,10 @@ public class LifeInDonation {
                 */
                 
                 System.out.print("email: ");
-                String email = keyboard.nextLine();
+                String email = keyboard.next();
                 
                 System.out.print("Address: ");
-                String address = keyboard.nextLine();
+                String address = keyboard.next();
                 
                 
                 PersonInNeed person_in_need_info =new PersonInNeed(N_id, 
@@ -151,4 +151,3 @@ public class LifeInDonation {
         
     
 }
-

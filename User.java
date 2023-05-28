@@ -1,4 +1,4 @@
-package lifeindonation;
+package donation;
 
 
 import java.sql.Connection;
@@ -27,10 +27,10 @@ public class User {
     public User(int id,String FN,String MN,String SN,int phone,String address, String email)
     {
         this.id=id;
-        this.first_name=first_name;
-        this.middle_name=middle_name;
-        this.surname=surname;
-        this.phone_number=phone_number;
+        this.first_name=FN;
+        this.middle_name=MN;
+        this.surname=SN;
+        this.phone_number=phone;
         this.address=address;
         this.email = email;
     }
@@ -141,7 +141,7 @@ public class User {
                 + "phone_number int not null," 
                 + "email varchar(100) not null," 
                 + "address varchar(40) not null," 
-                + "constraint pk_person_in_need primary key (National_Identity)" 
+                + "constraint pk_donor primary key (National_Identity)" 
                 + ")";
         
         
@@ -214,8 +214,7 @@ public class User {
                 + "'"+surname+"',"
                 + "'"+phone_number+"',"
                 + "'"+email+"',"
-                + "'"+address+"',"
-                + "'"+age+"')";
+                + "'"+address+"')";
         
         statement.execute(query);
         
