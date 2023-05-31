@@ -1,4 +1,4 @@
-package donation;
+package lifeindonation;
 
 
 import static java.lang.System.exit;
@@ -56,38 +56,60 @@ public class LifeInDonation {
         
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Please Enter The Following Personal information: ");
-                System.out.print("ID: ");
-                int id = keyboard.nextInt();
+        
+        try{
+                String id ;
+                do {
+                    System.out.print("ID: ");
+                    id = keyboard.next();
+    
+                    if (id.length() != 10) {
+                        System.out.println("ID number must be 10 digits. Please re-enter.");
+                        continue;
+                    }
+                    break; 
+                } while (true); 
+                int ID = Integer.parseInt(id);
+                
                 System.out.print("First Name: ");
                 String first_name = keyboard.next();
                 System.out.print("Middle Name: ");
                 String middle_name = keyboard.next();
                 System.out.print("Surname: ");
                 String surname = keyboard.next();
-                System.out.print("Phone Number: ");
-                int phone_number = (int) keyboard.nextInt();
+                
+                String phoneNumber;
+                do {
+                    System.out.print("Enter your phone number: ");
+                    phoneNumber = keyboard.next();
+    
+                    if (phoneNumber.length() != 10) {
+                        System.out.println("Phone number must be 10 digits. Please re-enter.");
+                        continue;
+                    }
+                    if (!phoneNumber.startsWith("05")) {
+                    System.out.println("Phone number must start with 05. Please re-enter.");
+                    continue;
+                    }
+                    break; 
+    
+                } while (true); 
+                
+                int phoneNumbers = Integer.parseInt(phoneNumber);
                
-                /*while(new Integer(phone_number).toString().length() != 10){
-                if (new Integer(phone_number).toString().length() == 10){
-                break;
-                }else{
-                System.out.println("\n!!wrong input!! \nPhone Number Consist of 10 Integer, Try Again!");
-                System.out.print("Phone Number: ");
-                phone_number = (int) keyboard.nextLong();
-                }
-                }
-                keyboard.nextLine();*/
-                
-                
                 System.out.print("email: ");
                 String email = keyboard.next();
                 
                 System.out.print("Address: ");
                 String address = keyboard.next();
                 
-                Donor donor_info = new Donor(id, 
-                        first_name, middle_name, surname, phone_number, 
-                        address, email);
+                Donor donor_info = new Donor(ID, first_name, middle_name, 
+                        surname, phoneNumbers, address, email);
+                donor_info.displayService();
+                
+        }catch(Exception e){
+            System.out.println("invalid input!");
+        }
                 
     }
     
@@ -96,21 +118,21 @@ public class LifeInDonation {
         
         User u = new User();
         u.create_PiN_table();
-        
+        try{
                 System.out.println("Please Enter The Following Personal information: ");
                 
-                System.out.print("\nEnter your National Identity Number: ");
-                int N_id = (int) keyboard.nextLong();
-        
-                /*while(new Integer(N_id).toString().length() != 10){
-                  if (new Integer(N_id).toString().length() == 10){
-                    break;
-                  }else{
-                    System.out.println("\n!!wrong input!! \nNational Identity Consist of 10 Integer, Try Again!");
-                    System.out.print("National Identity: ");
-                    N_id = (int) keyboard.nextLong();
-                 }
-                }*/
+                String id ;
+                do {
+                    System.out.print("ID: ");
+                    id = keyboard.next();
+    
+                    if (id.length() != 10) {
+                        System.out.println("ID number must be 10 digits. Please re-enter.");
+                        continue;
+                    }
+                    break; 
+                } while (true); 
+                int ID = Integer.parseInt(id);
                 
                 System.out.print("First Name: ");
                 String first_name = keyboard.next();
@@ -124,17 +146,22 @@ public class LifeInDonation {
                 System.out.print("Phone Number: ");
                 int phone_number = (int) keyboard.nextLong();
                
-                /*while(new Integer(phone_number).toString().length() != 10){
-                    if (new Integer(phone_number).toString().length() == 10){
-                    break;
-                }else{
-                    System.out.println("\n!!wrong input!! \nPhone Number Consist of 10 Integer, Try Again!");
-                    System.out.print("Phone Number: ");
-                    phone_number = (int) keyboard.nextLong();
+                String phoneNumber;
+                do {
+                    System.out.print("Enter your phone number: ");
+                    phoneNumber = keyboard.next();
+    
+                    if (phoneNumber.length() != 10) {
+                        System.out.println("Phone number must be 10 digits. Please re-enter.");
+                        continue;
                     }
-                }
-                keyboard.nextLine();
-                */
+                    if (!phoneNumber.startsWith("05")) {
+                    System.out.println("Phone number must start with 05. Please re-enter.");
+                    continue;
+                    }
+                    break; 
+                } while (true); 
+                int phoneNumbers = Integer.parseInt(phoneNumber);
                 
                 System.out.print("email: ");
                 String email = keyboard.next();
@@ -143,9 +170,12 @@ public class LifeInDonation {
                 String address = keyboard.next();
                 
                 
-                PersonInNeed person_in_need_info =new PersonInNeed(N_id, 
+                PersonInNeed person_in_need_info =new PersonInNeed(ID, 
                         first_name, middle_name, surname, phone_number, 
                         address, email);
+        }catch(Exception n){
+            System.out.println("invalid input!");
+        }
            
     }
         

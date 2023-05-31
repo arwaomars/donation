@@ -1,5 +1,11 @@
-package donation;
+package lifeindonation;
 
+/*
+User Class represent the parents for donor and personInNeed classes
+here:
+1- tables of donor and personInNeed create
+2- add values to tables
+*/
 
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -9,7 +15,7 @@ public class User {
     
      int id;
      String first_name, middle_name, surname;
-     int phone_number, age;
+     int phone_number;
      String email, address;
     
     
@@ -19,12 +25,33 @@ public class User {
     DataBase conn = new DataBase();
     static String query;
     
-    ///////////////////constructors///////////////////
+    ////////////////////////////consturctors////////////////////////////
     //1
-    public User(){}    
+    public User(){
+        System.out.println("detail of User not sent.");
+    }    
     
     //2 
-    public User(int id,String FN,String MN,String SN,int phone,String address, String email)
+    public User(int id,String FN,String MN,String SN,int phone,String address,String email,
+    Connection PiN_Connection, Connection donor_Connection, Statement statement,
+    DataBase conn, String query)
+    {
+        this.id=id;
+        this.first_name=FN;
+        this.middle_name=MN;
+        this.surname=SN;
+        this.phone_number=phone;
+        this.address=address;
+        this.email = email;
+        this.statement = statement;
+        this.query = query;
+        this.PiN_Connection = PiN_Connection;
+        this.donor_Connection = donor_Connection;
+        this.conn = conn;
+    }
+    
+    //3
+    public User(int id,String FN,String MN,String SN,int phone,String address,String email)
     {
         this.id=id;
         this.first_name=FN;
@@ -55,9 +82,6 @@ public class User {
     public void setAddress(String address){
         this.address = address;
     }
-    public void setAge(int age){
-        this.age = age;
-    }
     public void setEmail(String e){
         this.email = e;
     }
@@ -80,9 +104,6 @@ public class User {
     }
     public String getAddress(){
         return address;
-    }
-    public int getAge(){
-        return age;
     }
     public String setEmail(){
         return email;

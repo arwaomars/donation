@@ -1,7 +1,11 @@
-package donation;
+package lifeindonation;
 
-import java.sql.Connection;
-import java.sql.Statement;
+/*
+PersonInNeed class represent child of User class
+it display the list of services for Person In Need and then routing them to
+appropriate class to implements their requests.
+*/
+
 import java.util.Scanner;
 
 public class PersonInNeed extends User{
@@ -13,14 +17,15 @@ public class PersonInNeed extends User{
     private String surname;
     private int phone_number;
     private String address;
-    
+    PersonInNeed_Service service = new PersonInNeed_Service();
     
     Scanner input = new Scanner(System.in);
     
     
     ////////////////////////////consturctors////////////////////////////
-    //1
+    //1 (empty)
     public PersonInNeed(){
+        System.out.println("detail of PersonInNeed not sent.");
     }
     //2
     public PersonInNeed(int id,String FN,String MN,String SN,int phone,String address, String email)
@@ -31,17 +36,16 @@ public class PersonInNeed extends User{
         displayService();
     }
     
+    
+    ////////////////////////////core method////////////////////////////
     public void displayService(){
-        PersonInNeed_Service service= new PersonInNeed_Service();
-        
         int userSelection=0;
         try{
             System.out.print("-------------------------------------------------"
                     + "\nChoose a Service: "
                     + "\n> 1- List of available medical devices "
                     + "\n> 2- Add a specific need"
-                    + "\n> 3- Search for a medical device"                    
-                    + "\n> 4- Order a medical device"
+                    + "\n> 3- Search for a medical device" 
                     + "\n-------------------------------------------------\n");
             userSelection = input.nextInt();
         
@@ -52,8 +56,7 @@ public class PersonInNeed extends User{
                     + "\nChoose a Service: "
                     + "\n> 1- List of available medical devices "
                     + "\n> 2- Add a specific need"
-                    + "\n> 3- Search for a medical device"                    
-                    + "\n> 4- Order a medical device"
+                    + "\n> 3- Search for a medical device"   
                     + "\n-------------------------------------------------\n");
                 userSelection = input.nextInt();
             }

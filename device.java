@@ -1,26 +1,30 @@
 package lifeindonation;
-
-//this class need more constroctor + get&set method
-
+/*
+device Class provide:
+1- create tables for donated device and need device
+2- add values to tables
+*/
 import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.HashSet;
+import java.util.Random;
 
 class device {
     
     static Connection N_Connection; 
     static Connection D_Connection; 
+    static Connection o_Connection; 
     static Statement statement;
     DataBase conn = new DataBase();
     static String query;
     
-    
     private String name, status, type,description;
-    private int duration=0, id,number_of_needs,number_of_devices;
+    private int duration=0, id,number_of_needs,number_of_devices,dev_num;
     
     
     ////////////////////////////consturctors////////////////////////////
-    //1
+    //1 (all attribute)
     public device(String name, String status, String type, int duration,String description
                   ,int id, int nn, int nd){
         this.name = name;
@@ -55,7 +59,11 @@ class device {
         this.number_of_needs=nd;
         create_needed_device_table();
     }
-
+    
+    //4 (empty constrctor)
+    public device(){
+    System.out.println("detail of device not sent.");
+    }
     
     
     
@@ -68,6 +76,7 @@ class device {
             statement = D_Connection.createStatement(); 
             
             query = "create table donated_devices(" 
+                + "No_Dev int(100) not null," 
                 + "National_Identity_of_donor int(10) not null," 
                 + "Device_name varchar(50) not null," 
                 + "Device_type varchar(15) not null," 
@@ -75,7 +84,7 @@ class device {
                 + "Device_usage_time int(2) not null," 
                 + "Device_description varchar(250) not null," 
                 + "number_of_devices int(5) not null," 
-                + "constraint pk1 primary key (Device_name,Device_type),"
+                + "constraint pk1 primary key (Device_name,No_Dev),"
 + "constraint Fk1 foreign key (National_Identity_of_donor) REFERENCES donor(National_Identity)" 
                 + ")";
         
@@ -132,10 +141,17 @@ class device {
     public void add_donated_device(){
         try
         {  
+            Random r= new Random();
+            HashSet<Integer> set=new HashSet<>();
+           while(set.size()<1){
+               int random=r.nextInt(99)+10;
+               set.add(random);
+           }
             D_Connection = conn.connect(); 
-        
             statement =D_Connection.createStatement(); 
+            for(int count:set){
             query ="insert into donated_devices values("
+                + "'"+count+"',"
                 + "'"+id+"',"
                 + "'"+name+"',"
                 + "'"+type+"',"
@@ -143,8 +159,7 @@ class device {
                 + "'"+duration+"',"
                 + "'"+description+"',"
                 + "'"+number_of_devices+"')";
-            
-            statement.execute(query);
+            statement.execute(query);}
             
             System.out.println("\ndevice successfully added. "
         + "\nWe will contact you to set a date for receiving the device\n");

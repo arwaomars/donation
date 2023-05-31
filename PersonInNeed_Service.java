@@ -1,6 +1,12 @@
+package lifeindonation;
 
-package donation;
-
+/*
+this class provide service for person in need.
+the service: 
+1- Display List Of Available Device 
+2- Add Specific Need 
+3- search 
+*/
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -16,6 +22,23 @@ public class PersonInNeed_Service {
         static String query;
         static Connection c,cn;
         DataBase conn = new DataBase();
+        int id;
+        
+//////////////////////////////////consturctors//////////////////////////////////
+        //1
+        public PersonInNeed_Service(){
+        }
+        //2
+        public PersonInNeed_Service(ResultSet r, Statement ss, String query, 
+                Connection c,Connection cn, DataBase conn, int id){
+        this.r = r;
+        this.ss = ss;
+        this.query = query;
+        this.c = c;
+        this.cn = cn;
+        this.conn = conn;
+        this.id = id;
+        }
     
 //////////////////////////////PersonInNeed service//////////////////////////////
     
@@ -23,9 +46,8 @@ public class PersonInNeed_Service {
     public void ListOfAvailableDevice(){
     
         System.out.println("\nList Of Available device: ");
-      
         
-        try{
+       try{
             c = conn.connect();
             ss = c.createStatement();
             query = "select * from donated_devices";
@@ -33,8 +55,8 @@ public class PersonInNeed_Service {
             int count = 0;
             while(r.next()){
                 count++;
-                System.out.println(count+":");
-                System.out.println("id: "+r.getInt("National_Identity_of_donor"));
+                System.out.println(count + ":");
+                System.out.println("No.Dev: "+r.getInt("No_Dev"));
                 System.out.println("name: "+r.getString("Device_name"));
                 System.out.println("type: "+r.getString("Device_type"));
                 System.out.println("status: " + r.getString("Device_status"));
@@ -64,7 +86,7 @@ public class PersonInNeed_Service {
          
         Scanner input = new Scanner(System.in);
         String name,description,address;
-            
+        try{
         System.out.print("\nEnter the name of the device: ");
         name = input.nextLine();
         
@@ -88,13 +110,16 @@ public class PersonInNeed_Service {
             }catch(Exception e){
                 System.out.println("\nThere was an error. Try later");
             }
+        }catch(Exception e){
+            System.out.println("\nThere was an error. Try later");
+        }
     }
      
     
-     //3 (SearchToOrder)
-  public void SearchToOrder(){
+    //3 (Search)
+    public void SearchToOrder(){
     
-        System.out.println("\nEnter yhe name of the device: ");
+        System.out.println("\nEnter the name of the device: ");
         Scanner scan = new Scanner(System.in);
          String search=scan.nextLine();
 
@@ -106,9 +131,7 @@ public class PersonInNeed_Service {
             r = ss.executeQuery(query);
             int count = 0;
             while(r.next()){
-                count++;
-                System.out.println(count+":");
-                System.out.println("id: "+r.getInt("National_Identity_of_donor"));
+                System.out.println("No.dev: "+r.getInt("No_dev"));
                 System.out.println("name: "+r.getString("Device_name"));
                 System.out.println("type: "+r.getString("Device_type"));
                 System.out.println("status: " + r.getString("Device_status"));
@@ -132,6 +155,50 @@ public class PersonInNeed_Service {
         }
     }
     
+///////////////////////////////set & get methods////////////////////////////////
+    public void setR(ResultSet r){
+        this.r = r;
+    }
+    public void setSS (Statement ss){
+        this.ss = ss;
+    }
+    public void setQuery (String query){
+        this.query = query;
+    }
+    public void setC (Connection c){
+        this.c = c;
+    }
+    public void setCN (Connection cn){
+        this.cn = cn;
+    }
+    public void setconn (DataBase conn){
+        this.conn = conn;
+    }
+    public void setID (int id){
+        this.id = id;
+    }
     
+    
+    public ResultSet getR(){
+        return this.r;
+    }
+    public Statement getSS (){
+        return ss;
+    }
+    public String getQuery (){
+        return query;
+    }
+    public Connection getC (){
+        return c;
+    }
+    public Connection getCN (){
+        return cn;
+    }
+    public DataBase getconn (){
+        return conn;
+    }
+    public int getID (){
+        return id;
+    }
     
 }

@@ -1,5 +1,12 @@
-package donation;
+package lifeindonation;
 
+/*
+donorService class provide service for donor.
+the service: 
+1- take a Detail of Donate 
+2- List Of Need 
+3- search 
+*/
 
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -8,21 +15,34 @@ import java.sql.Statement;
 import java.util.Scanner;
 
 public class donorService {
-    
-    
         Scanner input = new Scanner(System.in); 
         static ResultSet r;
         static Statement ss;
         static String query;
         static Connection c;
         DataBase conn = new DataBase();
+//////////////////////////////////consturctors//////////////////////////////////
+        //1
+        public donorService(){
+        }
+        //2
+        public donorService(ResultSet r, Statement ss, String query, 
+                Connection c, DataBase conn){
+        this.r = r;
+        this.ss = ss;
+        this.query = query;
+        this.c = c;
+        this.conn = conn;
+        }
     
+        
 ////////////////////////////////donor service///////////////////////////////////
     
     //1 (Detail of Donate)
     public void DetailOfDonate(int id){
         int duration = 0;
         
+        try{
         //1
         System.out.print("\nEnter the name of the device: ");
         String name = input.nextLine();
@@ -49,7 +69,7 @@ public class donorService {
         int nn = input.nextInt();
         //6
         System.out.print("Device description: ");
-        String description = input.nextLine();
+        String description = input.next();
         
         //========================================//
         
@@ -62,7 +82,9 @@ public class donorService {
         }catch(Exception e){
             System.out.println("\nThere was an error. Try later");
         }
-        
+        }catch(Exception e){
+            System.out.println("\nThere was an error. Try later");
+        }
         
     }
     
@@ -103,4 +125,39 @@ public class donorService {
             
         }
     }
+    
+///////////////////////////////set & get methods////////////////////////////////
+    public void setR(ResultSet r){
+        this.r = r;
+    }
+    public void setSS (Statement ss){
+        this.ss = ss;
+    }
+    public void setQuery (String query){
+        this.query = query;
+    }
+    public void setC (Connection c){
+        this.c = c;
+    }
+    public void setconn (DataBase conn){
+        this.conn = conn;
+    }
+    
+    
+    public ResultSet getR(){
+        return this.r;
+    }
+    public Statement getSS (){
+        return ss;
+    }
+    public String getQuery (){
+        return query;
+    }
+    public Connection getC (){
+        return c;
+    }
+    public DataBase getconn (){
+        return conn;
+    }
+    
 }
