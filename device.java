@@ -47,6 +47,7 @@ class device {
         this.description = description;
         this.id=id;
         this.number_of_needs=nn;
+        
     }
     
     //3 (need)
@@ -57,7 +58,6 @@ class device {
         this.duration =duration;
         this.id=id;
         this.number_of_needs=nd;
-        create_needed_device_table();
     }
     
     //4 (empty constrctor)

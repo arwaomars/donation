@@ -21,7 +21,7 @@ public class Donor extends User{
     }
     //2
     public Donor(){
-        System.out.println("detail of Donor not sent.");
+        displayService();
     }
     
     

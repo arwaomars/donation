@@ -51,8 +51,7 @@ public class LifeInDonation {
     
     public static void Donor(){
         
-        User u = new User();
-        u.create_donor_table();
+        User u = new User(1);
         
         Scanner keyboard = new Scanner(System.in);
         System.out.println("Please Enter The Following Personal information: ");
@@ -116,8 +115,7 @@ public class LifeInDonation {
     public static void Those_in_need(){
         Scanner keyboard = new Scanner(System.in);
         
-        User u = new User();
-        u.create_PiN_table();
+        User u = new User(2);
         try{
                 System.out.println("Please Enter The Following Personal information: ");
                 
@@ -143,9 +141,6 @@ public class LifeInDonation {
                 System.out.print("Surname: ");
                 String surname = keyboard.next();
                 
-                System.out.print("Phone Number: ");
-                int phone_number = (int) keyboard.nextLong();
-               
                 String phoneNumber;
                 do {
                     System.out.print("Enter your phone number: ");
@@ -171,7 +166,7 @@ public class LifeInDonation {
                 
                 
                 PersonInNeed person_in_need_info =new PersonInNeed(ID, 
-                        first_name, middle_name, surname, phone_number, 
+                        first_name, middle_name, surname, phoneNumbers, 
                         address, email);
         }catch(Exception n){
             System.out.println("invalid input!");

@@ -27,8 +27,12 @@ public class User {
     
     ////////////////////////////consturctors////////////////////////////
     //1
-    public User(){
-        System.out.println("detail of User not sent.");
+    public User(int i){
+        if(i==1){
+            create_donor_table();
+        }else{
+            create_PiN_table();
+        }
     }    
     
     //2 
@@ -60,6 +64,9 @@ public class User {
         this.phone_number=phone;
         this.address=address;
         this.email = email;
+    }
+    //4
+    public User(){
     }
     
     

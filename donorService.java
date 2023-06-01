@@ -104,9 +104,9 @@ public class donorService {
             while(r.next()){
                 count++;
                 System.out.println(count+":");
-                System.out.println("name: "+r.getInt("Device_name"));
-                System.out.println("type: "+r.getInt("Device_type"));
-                System.out.println("description: " + r.getInt("Device_description"));
+                System.out.println("name: "+r.getString("Device_name"));
+                System.out.println("type: "+r.getString("Device_type"));
+                System.out.println("description: " + r.getString("Device_description"));
                 System.out.println("number_of_needs: " + r.getInt("number_of_needs"));
                 System.out.println("-------------------------------------------------");
             }
